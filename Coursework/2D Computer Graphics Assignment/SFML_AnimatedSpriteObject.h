@@ -1,11 +1,6 @@
 #pragma once
 #include "SFML_SpriteObject.h"
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-
 #include "SFML_SpriteAnimation.h"
 
 class SFML_AnimatedSpriteObject :
