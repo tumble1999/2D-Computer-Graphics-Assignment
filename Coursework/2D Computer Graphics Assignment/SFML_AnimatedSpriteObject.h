@@ -8,6 +8,18 @@ class SFML_AnimatedSpriteObject :
 {
 public:
 	SFML_AnimatedSpriteObject();
-	~SFML_AnimatedSpriteObject();
+	virtual ~SFML_AnimatedSpriteObject();
+
+	int addAnimation(std::string spriteSheetFilename, std::string spriteInfoFilename, float animationTime);
+
+	void setCurrentAnimation(int animationIndex);
+
+	SFML_SpriteAnimation* getCurrentAnimation();
+
+	virtual void updarte(float elapsedTime);
+	
+	void play();
+	void pause();
+	void stop();
 };
 
