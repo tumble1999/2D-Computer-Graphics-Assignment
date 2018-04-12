@@ -1,5 +1,7 @@
 #pragma once
+
 #include "SFML_SpriteObject.h"
+#include "SFML_SpriteAnimation.h"
 
 class SFML_AnimatedSpriteObject :
 	public SFML_SpriteObject
