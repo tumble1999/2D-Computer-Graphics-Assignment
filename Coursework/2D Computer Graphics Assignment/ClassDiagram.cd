@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="SFML_2DCamera">
+    <Position X="2" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAIAAAAQAAAAAGAAAAAAAIAIASAAAAAAA=</HashCode>
+      <FileName>SFML_2DCamera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SFML_Application">
+    <Position X="5" Y="10.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="SFML_Application::AppState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SFML_Application.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAAAAgMAAAAAAIIACAABCAEEQAIBABAEgAAQgABUAAA=</HashCode>
+      <FileName>SFML_Application.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_camera" />
+      <Field Name="m_titleScreen" />
+      <Field Name="m_mainMenu" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SFML_GameMenu" Collapsed="true">
+    <Position X="2" Y="12.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="SFML_GameMenu::MENU_ALIGNMENT" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SFML_GameMenu.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAAIUAAAAAAAAESAIAAIAAIAAAAQQCACAYAAAEgC0=</HashCode>
+      <FileName>SFML_GameMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SFML_GameWorldLayer">
+    <Position X="8" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAIAAARAAAAEAIAAAAAAAAAAAAQ=</HashCode>
+      <FileName>SFML_GameWorldLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SFML_TitleScreen" Collapsed="true">
+    <Position X="8" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABgEgAAAABAAAAAAIAAAAIAAAAAQAAgAAAgAAEAAA=</HashCode>
+      <FileName>SFML_TitleScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
