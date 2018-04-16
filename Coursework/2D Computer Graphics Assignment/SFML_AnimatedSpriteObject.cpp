@@ -81,6 +81,8 @@ int SFML_AnimatedSpriteObject::addAnimation(std::string spriteSheetFilename, std
 				iycenter = std::stoi(ycenter);
 
 				animation->addFrame(sf::IntRect(ileft, itop, iwidth, iheight), sf::Vector2f(ixcenter - ileft, iycenter - itop));
+
+				frameCounter++;
 			}
 			else
 				break;
