@@ -86,7 +86,7 @@ int SFML_AnimatedSpriteObject::addAnimation(std::string spriteSheetFilename, std
 				break;
 		} while (true);
 
-		inputFile.close()
+		inputFile.close();
 	}
 
 	if (frameCounter > 0) {
@@ -116,17 +116,39 @@ void SFML_AnimatedSpriteObject::setCurrentAnimation(int animationIndex)
 
 SFML_SpriteAnimation * SFML_AnimatedSpriteObject::getCurrentAnimation()
 {
-	return nullptr;
+	return m_currentAnimation;
 }
 
 void SFML_AnimatedSpriteObject::update(float elapsedTime)
-{}
+{
+	if (!m_isPaused && m_currentAnimation)
+	{
+		float frameTime = m_currentAnimation->getTimePerFrame();
+
+		m_currentTime += elapsedTime;
+
+		if (m_currentTime >= frameTime)
+		{
+			m_currentAnimation->incrementFrameNumber();
+			m_currentAnimation->getCurrentFrame(&m_textureRectangle, &m_spriteOrigin);
+			m_currentTime = m_currentTime - frameTime;
+		}
+	}
+	SFML_SpriteObject::update(elapsedTime);
+}
 
 void SFML_AnimatedSpriteObject::play()
-{}
+{
+	m_isPaused = false;
+}
 
 void SFML_AnimatedSpriteObject::pause()
-{}
+{
+	m_isPaused = true;
+}
 
 void SFML_AnimatedSpriteObject::stop()
-{}
+{
+	m_isPaused = true;
+	m_currentTime = 0;
+}
