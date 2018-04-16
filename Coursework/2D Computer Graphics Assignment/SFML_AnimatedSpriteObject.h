@@ -29,7 +29,7 @@ private:
 	bool m_isPaused;
 
 protected:
-	std::vector <SFML_AnimatedSpriteObject*> m_animatedSpriteList;
+	std::vector <SFML_SpriteAnimation*> m_animatedSpriteList;
 	SFML_SpriteAnimation* m_currentAnimation;
 };
 
