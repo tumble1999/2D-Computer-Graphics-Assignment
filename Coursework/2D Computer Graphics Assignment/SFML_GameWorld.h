@@ -4,6 +4,7 @@
 #include "SFML_GameWorldLayer.h"
 #include "SFML_SpriteObject.h"
 #include "Soldier.h"
+#include "SFML_AnimatedSpriteObject.h"
 
 class SFML_GameWorld :
 	public sf::Drawable
@@ -27,4 +28,7 @@ private:
 	SFML_2DCamera m_camera;
 	sf::Vector2f m_cameraPosition;
 	std::vector<Soldier*> m_soldiers;
+
+	SFML_AnimatedSpriteObject* m_animatedObject;
+	int m_idleAnimationID;
 };
