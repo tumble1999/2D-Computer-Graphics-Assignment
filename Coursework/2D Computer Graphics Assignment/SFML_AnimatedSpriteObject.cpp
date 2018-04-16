@@ -106,6 +106,10 @@ void SFML_AnimatedSpriteObject::setCurrentAnimation(int animationIndex)
 	if (newAnimation) {
 		if (m_currentAnimation != newAnimation) {
 			m_currentAnimation = newAnimation;
+			m_spriteTexture = m_currentAnimation->getSpriteSheet();
+			m_currentAnimation->resetCurrentAnimation();
+			m_currentAnimation->getCurrentFrame(&m_textureRectangle, &m_spriteOrigin);
+			m_currentTime = 0;
 		}
 	}
 }
