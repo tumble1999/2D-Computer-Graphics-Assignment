@@ -48,8 +48,8 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 	m_parentWindow = parentWindow;
 
 	m_animatedObject = new SFML_AnimatedSpriteObject();
-	m_idleAnimationID = m_animatedObject->addAnimation("Media/Textures/hero_flashlight_idle.png",
-		"Media/SpriteInfo/hero_flashlight_idle.txt",
+	m_idleAnimationID = m_animatedObject->addAnimation("Media/Textures/zombie-move.png",
+		"Media/SpriteInfo/zombie-move.txt",
 		1.0f);
 	m_animatedObject->setPosition(0, 0);
 	m_animatedObject->setCurrentAnimation(m_idleAnimationID);
