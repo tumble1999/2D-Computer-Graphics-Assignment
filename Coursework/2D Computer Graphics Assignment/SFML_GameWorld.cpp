@@ -53,6 +53,23 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 		1.0f);
 	m_animatedObject->setPosition(0, 0);
 	m_animatedObject->setCurrentAnimation(m_idleAnimationID);
+
+	m_numberofZombies = 3;
+
+	for (int i = 0; i < m_numberofZombies; i++)
+	{
+		SFML_NPCSpriteObject* npcSprite = new SFML_NPCSpriteObject();
+		npcSprite->setIdleAnimation("Media/Textures/zombie-idle.png", "Media/SpriteInfo/zombie-idle.txt", 1.0f);
+		npcSprite->setWalkingAnimation("Media/Textures/zombie-walking.png", "Media/SpriteInfo/zombie-walking.txt", 1.0f);
+		npcSprite->setAttackingAnimation("Media/Textures/zombie-attack.png", "Media/SpriteInfo/zombie-attacke.txt", 1.0f);
+
+		npcSprite->setPosition(rand() % 4000 - 2000, rand() % 4000 - 2000);
+		npcSprite->toIdleState();
+		m_zombieCharacterList.push_back(npcSprite);
+	}
+
+	m_shiftKeyWasPressed = false;
+	m_ctrlKeyWasPressed = false;
 }
 
 SFML_GameWorld::~SFML_GameWorld()
@@ -86,6 +103,11 @@ void SFML_GameWorld::update(float elapsedTime)
 	}
 
 	m_animatedObject->update(elapsedTime);
+
+	for (unsigned int counter = 0; counter < m_zombieCharacterList.size(); counter++)
+	{
+		m_zombieCharacterList[counter]->update(elapsedTime);
+	}
 }
 
 sf::Vector2f SFML_GameWorld::getMousePos()
@@ -103,7 +125,22 @@ sf::Vector2f SFML_GameWorld::getMousePos()
 
 void SFML_GameWorld::processEvents(float elapsedTime)
 {
-	float cameraPanSpeed = 60.0f;
+	bool shiftKeyIsPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) | sf::Keyboard::isKeyPressed(sf::Keyboard::RShift);
+	bool ctrlKeyIsPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) | sf::Keyboard::isKeyPressed(sf::Keyboard::LControl);
+
+	float cameraPanSpeed = 300.0f;
+	float cameraSpeedMultiplier = 5.0f;
+
+	if (shiftKeyIsPressed & m_shiftKeyWasPressed)
+	{
+		cameraPanSpeed *= cameraSpeedMultiplier;
+	}
+	if (ctrlKeyIsPressed & m_ctrlKeyWasPressed)
+	{
+		cameraPanSpeed /= cameraSpeedMultiplier;
+	}
+
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		m_cameraPosition.x -= cameraPanSpeed * elapsedTime;// .asSeconds();
@@ -130,6 +167,8 @@ void SFML_GameWorld::processEvents(float elapsedTime)
 	}
 
 	
+	m_shiftKeyWasPressed = shiftKeyIsPressed;
+	m_ctrlKeyWasPressed = shiftKeyIsPressed;
 
 
 	sf::Vector2f wp = getMousePos();
@@ -188,6 +227,11 @@ void SFML_GameWorld::draw(sf::RenderTarget & target, sf::RenderStates states) co
 
 	for (size_t i = 0; i < m_soldiers.size(); i++) {
 		target.draw(*m_soldiers[i], renderState);
+	}
+
+	for (unsigned int counter = 0; counter < m_zombieCharacterList.size(); counter++)
+	{
+		target.draw(*m_zombieCharacterList[counter], renderState);
 	}
 
 	for (std::size_t counter = 0; counter < m_gameWorldLayerList.size(); counter++)

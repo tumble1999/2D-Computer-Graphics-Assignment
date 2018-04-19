@@ -5,7 +5,7 @@
 #include "SFML_SpriteObject.h"
 #include "Soldier.h"
 #include "SFML_AnimatedSpriteObject.h"
-#inlcude ""
+#include "SFML_NPCSpriteObject.h"
 
 class SFML_GameWorld :
 	public sf::Drawable
@@ -32,4 +32,10 @@ private:
 
 	SFML_AnimatedSpriteObject* m_animatedObject;
 	int m_idleAnimationID;
+
+	std::vector<SFML_NPCSpriteObject*> m_zombieCharacterList;
+	int m_numberofZombies;
+
+	bool m_shiftKeyWasPressed;
+	bool m_ctrlKeyWasPressed;
 };
