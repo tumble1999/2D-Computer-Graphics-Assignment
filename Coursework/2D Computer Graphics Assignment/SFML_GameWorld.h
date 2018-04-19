@@ -5,6 +5,7 @@
 #include "SFML_SpriteObject.h"
 #include "Soldier.h"
 #include "SFML_AnimatedSpriteObject.h"
+#inlcude ""
 
 class SFML_GameWorld :
 	public sf::Drawable
