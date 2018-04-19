@@ -1,5 +1,8 @@
 #include "SFML_NPCSpriteObject.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 
 SFML_NPCSpriteObject::SFML_NPCSpriteObject()
 	: m_targetLocation(0, 0)
@@ -66,6 +69,21 @@ void SFML_NPCSpriteObject::setMovementSpeed(float speed)
 
 void SFML_NPCSpriteObject::update(float elapsedTime)
 {
+	const float PI = M_PI;
+
+	sf::Vector2f currentPosition = getPosition();
+
+	sf::Vector2f faceDirection = m_targetLocation - currentPosition;
+
+	float distance = sqrt(faceDirection.x * faceDirection.x + faceDirection.y);
+
+	if (distance < elapsedTime * m_moveSpeed)
+	{
+		setPosition(m_targetLocation);
+
+		toIdleState();
+
+	}
 
 	SFML_AnimatedSpriteObject::update(elapsedTime);
 }

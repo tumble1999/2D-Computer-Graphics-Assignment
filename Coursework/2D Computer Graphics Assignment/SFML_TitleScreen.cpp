@@ -27,7 +27,7 @@ SFML_TitleScreen::SFML_TitleScreen(std::string texturefilename, int windowWidth,
 
 	//center the image
 	sf::Vector2u msgTextureSize = m_messageTexture.getSize();
-	m_messageSprite.setOrigin(msgTextureSize.x / 2, msgTextureSize.y / 2);
+	m_messageSprite.setOrigin(static_cast<float>(msgTextureSize.x) / 2, static_cast<float>(msgTextureSize.y) / 2);
 
 	//set rectangkle to cover texture area
 	m_messageSprite.setTextureRect(sf::IntRect(0, 0, msgTextureSize.x, msgTextureSize.y));
