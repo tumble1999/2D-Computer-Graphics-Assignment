@@ -9,7 +9,7 @@ public:
 	~Util();
 
 	template<class T, class U>
-	static void Log(T& source, U s) {
-		std::cout << "[" << typeid(source).name() << "] " << s << std::endl;
+	static void Log(T* source, U s) {
+		std::cout << "[" << typeid(*source).name() << "] " << s << std::endl;
 	}
 };
