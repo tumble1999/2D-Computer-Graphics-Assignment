@@ -47,14 +47,7 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 
 	m_parentWindow = parentWindow;
 
-	m_animatedObject = new SFML_AnimatedSpriteObject();
-	m_idleAnimationID = m_animatedObject->addAnimation("Media/Textures/zombie-move.png",
-		"Media/SpriteInfo/zombie-move.txt",
-		1.0f);
-	m_animatedObject->setPosition(0, 0);
-	m_animatedObject->setCurrentAnimation(m_idleAnimationID);
-
-	m_numberofZombies = 3;
+	m_numberofZombies = 300;
 
 	for (int i = 0; i < m_numberofZombies; i++)
 	{
@@ -83,8 +76,6 @@ SFML_GameWorld::~SFML_GameWorld()
 		delete(*it);
 	}
 	m_gameWorldLayerList.clear();
-
-	delete m_animatedObject;
 }
 
 void SFML_GameWorld::update(float elapsedTime)
@@ -101,8 +92,6 @@ void SFML_GameWorld::update(float elapsedTime)
 	for (size_t i = 0; i < m_soldiers.size(); i++) {
 		m_soldiers[i]->update(elapsedTime);
 	}
-
-	m_animatedObject->update(elapsedTime);
 
 	for (unsigned int counter = 0; counter < m_zombieCharacterList.size(); counter++)
 	{
@@ -223,8 +212,6 @@ void SFML_GameWorld::draw(sf::RenderTarget & target, sf::RenderStates states) co
 
 	sf::RenderStates renderState;
 	renderState.transform = m_camera.getProjTransform() * m_camera.getViewTransform();
-
-	target.draw(*m_animatedObject, renderState);
 
 	for (size_t i = 0; i < m_soldiers.size(); i++) {
 		target.draw(*m_soldiers[i], renderState);

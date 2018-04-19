@@ -30,9 +30,6 @@ private:
 	sf::Vector2f m_cameraPosition;
 	std::vector<Soldier*> m_soldiers;
 
-	SFML_AnimatedSpriteObject* m_animatedObject;
-	int m_idleAnimationID;
-
 	std::vector<SFML_NPCSpriteObject*> m_zombieCharacterList;
 	int m_numberofZombies;
 
