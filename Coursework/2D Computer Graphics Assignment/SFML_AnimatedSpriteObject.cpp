@@ -80,7 +80,7 @@ int SFML_AnimatedSpriteObject::addAnimation(std::string spriteSheetFilename, std
 				ixcenter = std::stoi(xcenter);
 				iycenter = std::stoi(ycenter);
 
-				animation->addFrame(sf::IntRect(ileft, itop, iwidth, iheight), sf::Vector2f(ixcenter - ileft, iycenter - itop));
+				animation->addFrame(sf::IntRect(ileft, itop, iwidth, iheight), sf::Vector2f(static_cast<float>(ixcenter - ileft), static_cast<float>(iycenter - itop)));
 
 				frameCounter++;
 			}

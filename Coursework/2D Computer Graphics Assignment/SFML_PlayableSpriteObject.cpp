@@ -1,5 +1,8 @@
 #include "SFML_PlayableSpriteObject.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 
 SFML_PlayableSpriteObject::SFML_PlayableSpriteObject()
 	: m_readyToShoot(false)
@@ -44,12 +47,12 @@ SFML_BulletSpriteObject* SFML_PlayableSpriteObject::processEvents(float elapsedT
 		double magnitude = sqrt(differenceVector.x*differenceVector.x + differenceVector.y*differenceVector.y);
 
 		// normalise the difference vector
-		differenceVector.x /= magnitude;
-		differenceVector.y /= magnitude;
+		differenceVector.x /= static_cast<float>(magnitude);
+		differenceVector.y /= static_cast<float>(magnitude);
 
 		if (rightButtonPressed)
 		{
-			setRotation(angleinDegrees);
+			setRotation(static_cast<float>(angleinDegrees));
 
 			if (leftButtonPressed)
 			{				
@@ -466,7 +469,7 @@ SFML_BulletSpriteObject* SFML_PlayableSpriteObject::shoot()
 		bullet->setMaxRange(3000);
 		bullet->setSpeed(5000);
 
-		const float PI = 3.14;
+		const float PI = static_cast<float>(M_PI);
 		float angle = getRotation() / 180 * PI;
 		sf::Vector2f faceDirection = sf::Vector2f(cos(angle), sin(angle));
 		bullet->setMoveDirection(faceDirection, true);

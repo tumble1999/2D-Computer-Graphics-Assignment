@@ -2,7 +2,7 @@
 
 SFML_2DCamera::SFML_2DCamera(int projectionWindowWidth, int projectionWindowHeight)
 	: m_cameraPosition(0, 0)
-	, m_cameraWindowSize(projectionWindowWidth, projectionWindowHeight)
+	, m_cameraWindowSize(static_cast<float>(projectionWindowWidth), static_cast<float>(projectionWindowHeight))
 	, m_cameraZoom(1)
 	, m_lastCameraZoom(1)
 {}

@@ -60,7 +60,7 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 	{
 		SFML_NPCSpriteObject* npcSprite = new SFML_NPCSpriteObject();
 		npcSprite->setIdleAnimation("Media/Textures/zombie-idle.png", "Media/SpriteInfo/zombie-idle.txt", 1.0f);
-		npcSprite->setWalkingAnimation("Media/Textures/zombie-walking.png", "Media/SpriteInfo/zombie-walking.txt", 1.0f);
+		npcSprite->setWalkingAnimation("Media/Textures/zombie-move.png", "Media/SpriteInfo/zombie-move.txt", 1.0f);
 		npcSprite->setAttackingAnimation("Media/Textures/zombie-attack.png", "Media/SpriteInfo/zombie-attacke.txt", 1.0f);
 
 		npcSprite->setPosition(static_cast<float>(rand() % 4000 - 2000), static_cast<float>(rand() % 4000 - 2000));
@@ -199,7 +199,7 @@ void SFML_GameWorld::processEvents(float elapsedTime)
 		}
 		else
 		{
-			m_soldiers[i]->setColor(sf::Color(255, 255, 266));
+			m_soldiers[i]->setColor(sf::Color((sf::Uint8)255, (sf::Uint8)255, (sf::Uint8)266));
 		}
 	}
 	
