@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SFML_2DCamera.cpp" />
     <ClCompile Include="SFML_AnimatedSpriteObject.cpp" />
     <ClCompile Include="SFML_Application.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Player.h" />
     <ClInclude Include="SFML_2DCamera.h" />
     <ClInclude Include="SFML_AnimatedSpriteObject.h" />
     <ClInclude Include="SFML_Application.h" />
@@ -195,8 +197,8 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <PropertyGroup>
-  <IntDirSharingDetected>
+    <IntDirSharingDetected>
     None
   </IntDirSharingDetected>
-</PropertyGroup>
+  </PropertyGroup>
 </Project>

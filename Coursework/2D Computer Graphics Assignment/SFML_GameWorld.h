@@ -6,6 +6,7 @@
 #include "Soldier.h"
 #include "SFML_AnimatedSpriteObject.h"
 #include "SFML_NPCSpriteObject.h"
+#include "Player.h"
 
 class SFML_GameWorld :
 	public sf::Drawable
@@ -32,6 +33,8 @@ private:
 
 	std::vector<SFML_NPCSpriteObject*> m_zombieCharacterList;
 	int m_numberofZombies;
+
+	Player* m_player;
 
 	bool m_shiftKeyWasPressed;
 	bool m_ctrlKeyWasPressed;

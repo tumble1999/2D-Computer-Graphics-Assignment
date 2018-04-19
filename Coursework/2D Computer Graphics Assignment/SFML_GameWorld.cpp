@@ -6,6 +6,7 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 	: m_windowWidth(windowWidth)
 	, m_windowHeight(windowHeight)
 	, m_camera(windowWidth, windowHeight)
+	, m_player()
 {
 
 	SFML_GameWorldLayer* background = new SFML_GameWorldLayer("Media/Textures/wall.png",
@@ -32,7 +33,7 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 	m_spriteObject.setPosition(0, 0);*/
 
 	int maxXY = 5000;
-	int solderCount = 99;
+	int solderCount = 0;
 
 	int fullMax = maxXY * 2;
 
@@ -47,7 +48,7 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 
 	m_parentWindow = parentWindow;
 
-	m_numberofZombies = 300;
+	m_numberofZombies = 3;
 
 	for (int i = 0; i < m_numberofZombies; i++)
 	{
@@ -75,6 +76,9 @@ SFML_GameWorld::~SFML_GameWorld()
 	{
 		delete(*it);
 	}
+
+	delete m_player;
+
 	m_gameWorldLayerList.clear();
 }
 
@@ -92,6 +96,8 @@ void SFML_GameWorld::update(float elapsedTime)
 	for (size_t i = 0; i < m_soldiers.size(); i++) {
 		m_soldiers[i]->update(elapsedTime);
 	}
+
+	m_player->update(elapsedTime);
 
 	for (unsigned int counter = 0; counter < m_zombieCharacterList.size(); counter++)
 	{
@@ -221,6 +227,8 @@ void SFML_GameWorld::draw(sf::RenderTarget & target, sf::RenderStates states) co
 	{
 		target.draw(*m_zombieCharacterList[counter], renderState);
 	}
+
+	target.draw(*m_player, renderState);
 
 	for (std::size_t counter = 0; counter < m_gameWorldLayerList.size(); counter++)
 	{
