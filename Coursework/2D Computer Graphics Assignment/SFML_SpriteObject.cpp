@@ -36,8 +36,8 @@ bool SFML_SpriteObject::setDefaultTexture(std::string textureFilename)
 
 	//Setting default origin and default rectangle
 	m_spriteOrigin = sf::Vector2f(
-		m_defaultTexture->getSize().x / 2,
-		m_defaultTexture->getSize().y / 2
+		static_cast<float>(m_defaultTexture->getSize().x / 2),
+		static_cast<float>(m_defaultTexture->getSize().y / 2)
 	);
 	m_textureRectangle = sf::IntRect(
 		0, 0,
@@ -106,7 +106,7 @@ bool SFML_SpriteObject::setDefaultTexture(std::string textureFilename, std::stri
 
 		}
 
-		m_spriteOrigin = sf::Vector2f(i_xcenter - i_left, i_ycenter - i_top);
+		m_spriteOrigin = sf::Vector2f(static_cast<float>(i_xcenter - i_left), static_cast<float>(i_ycenter - i_top));
 		m_textureRectangle = sf::IntRect(i_left, i_top, i_width, i_height);
 
 		inputFile.close();

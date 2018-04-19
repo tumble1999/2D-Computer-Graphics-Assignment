@@ -69,7 +69,7 @@ void SFML_NPCSpriteObject::setMovementSpeed(float speed)
 
 void SFML_NPCSpriteObject::update(float elapsedTime)
 {
-	const float PI = M_PI;
+	const float PI = static_cast<float>(M_PI);
 
 	sf::Vector2f currentPosition = getPosition();
 
@@ -82,7 +82,17 @@ void SFML_NPCSpriteObject::update(float elapsedTime)
 		setPosition(m_targetLocation);
 
 		toIdleState();
+	}
+	else
+	{
+		float angle = atan2(faceDirection.y, faceDirection.x);
+		setRotation(angle / PI * 180);
 
+		sf::Vector2f unitMoveVector = sf::Vector2f(cos(angle), sin(angle));
+		sf::Vector2f totalMoveVector = unitMoveVector * elapsedTime * m_moveSpeed;
+		move(totalMoveVector);
+
+		toWalkingState();
 	}
 
 	SFML_AnimatedSpriteObject::update(elapsedTime);
