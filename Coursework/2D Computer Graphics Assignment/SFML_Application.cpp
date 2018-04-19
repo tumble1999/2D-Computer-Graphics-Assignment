@@ -26,7 +26,7 @@ SFML_Application::SFML_Application(int windowWidth, int windowHeight)
 	m_creditsText.setFont(m_textFont);
 
 	m_mainMenu.setScale(0.85f, 0.85f);
-	m_mainMenu.setPosition(m_screenWidth / 2, m_screenHeight / 2);
+	m_mainMenu.setPosition(static_cast<float>(m_screenWidth / 2), static_cast<float>(m_screenHeight / 2));
 
 
 
@@ -144,7 +144,7 @@ void SFML_Application::update(sf::Time elapsedTime)
 	if (m_appState != CREDITSSCREEN)
 	{
 		//reset pos of credits
-		creditsY = m_screenHeight / 2;
+		creditsY = static_cast<float>(m_screenHeight / 2);
 		m_creditsScreenSprite.setColor(sf::Color(255, 255, 255));
 	}
 
@@ -209,17 +209,17 @@ void SFML_Application::update(sf::Time elapsedTime)
 		if (creditsY > m_creditsText.getLocalBounds().height / 2 + buffer && creditsY < windowHeight - m_creditsText.getLocalBounds().height / 2 - buffer)
 		{
 			m_creditsScreenSprite.setColor(sf::Color(
-				m_creditsScreenSprite.getColor().r == 50.0f ? 50.0f : m_creditsScreenSprite.getColor().r - 0.00001f,
-				m_creditsScreenSprite.getColor().g == 50.0f ? 50.0f : m_creditsScreenSprite.getColor().g - 0.00001f,
-				m_creditsScreenSprite.getColor().b == 50.0f ? 50.0f : m_creditsScreenSprite.getColor().b - 0.00001f
+				static_cast<sf::Uint8>(m_creditsScreenSprite.getColor().r == 50.0f ? 50.0f : m_creditsScreenSprite.getColor().r - 0.00001f),
+				static_cast<sf::Uint8>(m_creditsScreenSprite.getColor().g == 50.0f ? 50.0f : m_creditsScreenSprite.getColor().g - 0.00001f),
+				static_cast<sf::Uint8>(m_creditsScreenSprite.getColor().b == 50.0f ? 50.0f : m_creditsScreenSprite.getColor().b - 0.00001f)
 			));
 		}
 		else
 		{
 			m_creditsScreenSprite.setColor(sf::Color(
-				m_creditsScreenSprite.getColor().r == 255.0f ? 255.0f : m_creditsScreenSprite.getColor().r + 0.00001f,
-				m_creditsScreenSprite.getColor().g == 255.0f ? 255.0f : m_creditsScreenSprite.getColor().g + 0.00001f,
-				m_creditsScreenSprite.getColor().b == 255.0f ? 255.0f : m_creditsScreenSprite.getColor().b + 0.00001f
+				static_cast<sf::Uint8>(m_creditsScreenSprite.getColor().r == 255.0f ? 255.0f : m_creditsScreenSprite.getColor().r + 0.00001f),
+				static_cast<sf::Uint8>(m_creditsScreenSprite.getColor().g == 255.0f ? 255.0f : m_creditsScreenSprite.getColor().g + 0.00001f),
+				static_cast<sf::Uint8>(m_creditsScreenSprite.getColor().b == 255.0f ? 255.0f : m_creditsScreenSprite.getColor().b + 0.00001f)
 			));
 		}
 		
@@ -241,7 +241,7 @@ void SFML_Application::update(sf::Time elapsedTime)
 
 	
 	m_creditsText.setCharacterSize(100);
-	m_creditsText.setPosition(m_screenWidth / 2, windowHeight - creditsY - m_creditsText.getLocalBounds().height/2 - buffer);
+	m_creditsText.setPosition(static_cast<float>(m_screenWidth / 2), static_cast<float>(windowHeight - creditsY - m_creditsText.getLocalBounds().height/2 - buffer));
 
 	textbox = m_creditsText.getLocalBounds();
 	m_creditsText.setOrigin(textbox.width / 2, textbox.height / 2);

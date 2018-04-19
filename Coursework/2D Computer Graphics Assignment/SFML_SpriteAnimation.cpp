@@ -34,7 +34,7 @@ void SFML_SpriteAnimation::addFrame(sf::IntRect textureRect, sf::Vector2f centre
 bool SFML_SpriteAnimation::getCurrentFrame(sf::IntRect* rect, sf::Vector2f* centre)
 {
 	if ((m_currentFrameNumber < 0)
-		|| (m_currentFrameNumber >= m_frameRectangleList.size()))
+		|| (m_currentFrameNumber >= static_cast<int>(m_frameRectangleList.size())) )
 	{
 		return false;
 	}
@@ -106,13 +106,13 @@ bool SFML_SpriteAnimation::canbeInterrupted() const
 void SFML_SpriteAnimation::incrementFrameNumber()
 {
 	m_currentFrameNumber++;
-	if (m_currentFrameNumber >= m_frameRectangleList.size() - 1)
+	if (m_currentFrameNumber >= static_cast<int>(m_frameRectangleList.size()) - 1)
 	{
 		if (m_isLoop)
 		{
 			resetCurrentAnimation();
 		} else {
-			m_currentFrameNumber = m_frameRectangleList.size() - 1;
+			m_currentFrameNumber = static_cast<int>(m_frameRectangleList.size()) - 1;
 		}
 	}
 }
@@ -131,7 +131,7 @@ void SFML_SpriteAnimation::resetCurrentAnimation()
 
 bool SFML_SpriteAnimation::isCompleted()
 {
-	if (m_currentFrameNumber >= m_frameRectangleList.size() - 1)
+	if (m_currentFrameNumber >= static_cast<int>(m_frameRectangleList.size()) - 1)
 	{
 		return true;
 	}

@@ -18,9 +18,9 @@ SFML_GameWorldLayer::SFML_GameWorldLayer(std::string textureFileName, float para
 		//3----------2
 
 		m_layerVertices[0].position = sf::Vector2f(0.0f, 0.0f);
-		m_layerVertices[1].position = sf::Vector2f(0.0f, viewportHeight);
-		m_layerVertices[2].position = sf::Vector2f(viewportWidth, viewportHeight);
-		m_layerVertices[3].position = sf::Vector2f(viewportWidth, 0.0f);
+		m_layerVertices[1].position = sf::Vector2f(0.0f, static_cast<float>(viewportHeight));
+		m_layerVertices[2].position = sf::Vector2f(static_cast<float>(viewportWidth), static_cast<float>(viewportHeight));
+		m_layerVertices[3].position = sf::Vector2f(static_cast<float>(viewportWidth), 0.0f);
 	}
 }
 
@@ -38,10 +38,10 @@ void SFML_GameWorldLayer::followCamera(SFML_2DCamera* camera, bool enableParalla
 {
 	sf::FloatRect cameraWindows = camera->getCameraWindow(m_parallaxFactor, enableParallaxZoom);
 
-	int left = cameraWindows.left + m_offset.x;
-	int right = cameraWindows.left + cameraWindows.width + m_offset.x;
-	int top = cameraWindows.top + m_offset.y;
-	int bottom = cameraWindows.top + cameraWindows.height + m_offset.y;
+	float left = cameraWindows.left + m_offset.x;
+	float right = cameraWindows.left + cameraWindows.width + m_offset.x;
+	float top = cameraWindows.top + m_offset.y;
+	float bottom = cameraWindows.top + cameraWindows.height + m_offset.y;
 
 	m_layerVertices[0].texCoords = sf::Vector2f(left, top);
 	m_layerVertices[1].texCoords = sf::Vector2f(left, bottom);

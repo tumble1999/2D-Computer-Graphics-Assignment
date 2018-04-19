@@ -26,15 +26,15 @@ SFML_GameMenu::SFML_GameMenu(std::string menufilename, int windowWidth, int wind
 			m_backgroundSprite.setTexture(m_backgroundTexture);
 
 			sf::Vector2u textureSize = m_backgroundTexture.getSize();
-			m_backgroundSprite.setOrigin(textureSize.x / 2, textureSize.y / 2);
+			m_backgroundSprite.setOrigin(static_cast<float>(textureSize.x / 2), static_cast<float>(textureSize.y / 2));
 			m_backgroundSprite.setTextureRect(sf::IntRect(0, 0, textureSize.x, textureSize.y));
 			m_backgroundSprite.setPosition(0, 0);
 
 			//set texture
 			m_backgroundRect.left = -static_cast<float> (textureSize.x / 2);
 			m_backgroundRect.top = -static_cast<float> (textureSize.y / 2);
-			m_backgroundRect.width = textureSize.x;
-			m_backgroundRect.height = textureSize.y;
+			m_backgroundRect.width = static_cast<float>(textureSize.x);
+			m_backgroundRect.height = static_cast<float>(textureSize.y);
 		}
 
 		//line 2
@@ -46,7 +46,7 @@ SFML_GameMenu::SFML_GameMenu(std::string menufilename, int windowWidth, int wind
 			m_logoSprite.setTexture(m_logo);
 
 			sf::Vector2u textureSize = m_logo.getSize();
-			m_logoSprite.setOrigin(textureSize.x / 2, textureSize.y / 2);
+			m_logoSprite.setOrigin(static_cast<float>(textureSize.x / 2), static_cast<float>(textureSize.y / 2));
 			m_logoSprite.setTextureRect(sf::IntRect(0, 0, textureSize.x, textureSize.y));
 			m_logoSprite.setPosition(0, m_backgroundTexture.getSize().y / 2 * 0.9f);
 		}
@@ -148,8 +148,8 @@ SFML_GameMenu::SFML_GameMenu(std::string menufilename, int windowWidth, int wind
 			xBorderInt = std::stoi(redString);
 			yBorderInt = std::stoi(greenString);
 
-			m_menuItemBorder.x = xBorderInt;
-			m_menuItemBorder.y = yBorderInt;
+			m_menuItemBorder.x = static_cast<float>(xBorderInt);
+			m_menuItemBorder.y = static_cast<float>(yBorderInt);
 		}
 
 		sf::Text start;

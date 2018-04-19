@@ -157,12 +157,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SFML_2DCamera.cpp" />
     <ClCompile Include="SFML_AnimatedSpriteObject.cpp" />
     <ClCompile Include="SFML_Application.cpp" />
+    <ClCompile Include="SFML_BulletSpriteObject.cpp" />
     <ClCompile Include="SFML_GameMenu.cpp" />
     <ClCompile Include="SFML_GameWorld.cpp" />
     <ClCompile Include="SFML_GameWorldLayer.cpp" />
+    <ClCompile Include="SFML_NPCSpriteObject.cpp" />
+    <ClCompile Include="SFML_PlayableSpriteObject.cpp" />
     <ClCompile Include="SFML_SpriteAnimation.cpp" />
     <ClCompile Include="SFML_SpriteObject.cpp" />
     <ClCompile Include="SFML_TitleScreen.cpp" />
@@ -170,12 +174,16 @@
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Player.h" />
     <ClInclude Include="SFML_2DCamera.h" />
     <ClInclude Include="SFML_AnimatedSpriteObject.h" />
     <ClInclude Include="SFML_Application.h" />
+    <ClInclude Include="SFML_BulletSpriteObject.h" />
     <ClInclude Include="SFML_GameMenu.h" />
     <ClInclude Include="SFML_GameWorld.h" />
     <ClInclude Include="SFML_GameWorldLayer.h" />
+    <ClInclude Include="SFML_NPCSpriteObject.h" />
+    <ClInclude Include="SFML_PlayableSpriteObject.h" />
     <ClInclude Include="SFML_SpriteAnimation.h" />
     <ClInclude Include="SFML_SpriteObject.h" />
     <ClInclude Include="SFML_TitleScreen.h" />
@@ -188,4 +196,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <PropertyGroup>
+    <IntDirSharingDetected>
+    None
+  </IntDirSharingDetected>
+  </PropertyGroup>
 </Project>
