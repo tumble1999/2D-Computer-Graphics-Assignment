@@ -6,7 +6,6 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 	: m_windowWidth(windowWidth)
 	, m_windowHeight(windowHeight)
 	, m_camera(windowWidth, windowHeight)
-	, m_player()
 {
 
 	SFML_GameWorldLayer* background = new SFML_GameWorldLayer("Media/Textures/wall.png",
@@ -64,6 +63,8 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 
 	m_shiftKeyWasPressed = false;
 	m_ctrlKeyWasPressed = false;
+
+	m_player = new Player();
 }
 
 SFML_GameWorld::~SFML_GameWorld()
@@ -97,12 +98,12 @@ void SFML_GameWorld::update(float elapsedTime)
 		m_soldiers[i]->update(elapsedTime);
 	}
 
-	m_player->update(elapsedTime);
-
 	for (unsigned int counter = 0; counter < m_zombieCharacterList.size(); counter++)
 	{
 		m_zombieCharacterList[counter]->update(elapsedTime);
 	}
+
+	m_player->update(elapsedTime, m_camera);
 }
 
 sf::Vector2f SFML_GameWorld::getMousePos()

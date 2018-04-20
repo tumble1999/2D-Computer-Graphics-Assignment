@@ -11,7 +11,7 @@ SFML_GameMenu::SFML_GameMenu(std::string menufilename, int windowWidth, int wind
 	std::ifstream inputFile(menufilename);
 
 	m_quickMenuNavigationDelay = 50.0f;
-	m_quickMenuNavigationRate = 5.0f;
+	m_quickMenuNavigationRate = 50.0f;
 	m_quickMenuNavigationTimer = m_quickMenuNavigationDelay;
 	
 	if (inputFile.is_open())
