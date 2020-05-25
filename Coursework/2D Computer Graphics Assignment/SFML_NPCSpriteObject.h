@@ -1,5 +1,7 @@
 #pragma once
 #include "SFML_AnimatedSpriteObject.h"
+#include "Player.h"
+
 class SFML_NPCSpriteObject :
 	public SFML_AnimatedSpriteObject
 {
@@ -7,7 +9,7 @@ public:
 			SFML_NPCSpriteObject();
 	virtual ~SFML_NPCSpriteObject();
 
-	virtual void	update(float elapsedTime);
+	virtual void update(float elapsedTime, Player* player);
 
 	void	setTargetLocation(sf::Vector2f targetLocation);
 	void	setMovementSpeed(float speed);

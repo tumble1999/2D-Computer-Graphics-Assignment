@@ -32,7 +32,7 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 	m_spriteObject.setPosition(0, 0);*/
 
 	int maxXY = 5000;
-	int solderCount = 0;
+	int solderCount = 10;
 
 	int fullMax = maxXY * 2;
 
@@ -47,7 +47,7 @@ SFML_GameWorld::SFML_GameWorld(int windowWidth, int windowHeight, sf::RenderWind
 
 	m_parentWindow = parentWindow;
 
-	m_numberofZombies = 3;
+	m_numberofZombies = 10;
 
 	for (int i = 0; i < m_numberofZombies; i++)
 	{
@@ -100,7 +100,7 @@ void SFML_GameWorld::update(float elapsedTime)
 
 	for (unsigned int counter = 0; counter < m_zombieCharacterList.size(); counter++)
 	{
-		m_zombieCharacterList[counter]->update(elapsedTime);
+		m_zombieCharacterList[counter]->update(elapsedTime, m_player);
 	}
 
 	m_player->update(elapsedTime, m_camera);

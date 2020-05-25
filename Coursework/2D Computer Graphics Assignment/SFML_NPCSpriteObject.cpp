@@ -67,8 +67,11 @@ void SFML_NPCSpriteObject::setMovementSpeed(float speed)
 	m_moveSpeed = speed;
 }
 
-void SFML_NPCSpriteObject::update(float elapsedTime)
+void SFML_NPCSpriteObject::update(float elapsedTime, Player* player)
 {
+	sf::FloatRect playerBound = sf::FloatRect(player->getOrigin().x - 3, player->getOrigin().y - 3, 6, 6);
+	sf::FloatRect thisBound = sf::FloatRect(this->getOrigin().x - 3, this->getOrigin().y - 3, 6, 6);
+
 	const float PI = static_cast<float>(M_PI);
 
 	sf::Vector2f currentPosition = getPosition();
@@ -90,10 +93,18 @@ void SFML_NPCSpriteObject::update(float elapsedTime)
 
 		sf::Vector2f unitMoveVector = sf::Vector2f(cos(angle), sin(angle));
 		sf::Vector2f totalMoveVector = unitMoveVector * elapsedTime * m_moveSpeed;
-		move(totalMoveVector);
 
-		toWalkingState();
+		if (thisBound.intersects(playerBound)) {
+			toIdleState();
+		}
+		else {
+			move(totalMoveVector);
+			toWalkingState();
+		}
+
 	}
 
 	SFML_AnimatedSpriteObject::update(elapsedTime);
+	
+	
 }
